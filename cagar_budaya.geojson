@@ -1,0 +1,18 @@
+{
+"type": "FeatureCollection",
+"name": "cagar_budaya",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "NAMOBJ": "Pantai Klara Pintu Utama", "LUAS": 0.0, "FCODE": null, "REMARK": "Pariwisata/Rekreasi Pantai", "SRS_ID": null, "LCODE": "GG0080", "METADATA": null }, "geometry": { "type": "Point", "coordinates": [ 105.213134834000073, -5.579706259999966, 51.0 ] } },
+{ "type": "Feature", "properties": { "NAMOBJ": "Pantai Sari Ringgung", "LUAS": 0.0, "FCODE": null, "REMARK": "Pariwisata/Rekreasi Pantai", "SRS_ID": null, "LCODE": "GG0080", "METADATA": null }, "geometry": { "type": "Point", "coordinates": [ 105.252194663000068, -5.557671939999977, 74.573499999998603 ] } },
+{ "type": "Feature", "properties": { "NAMOBJ": "Area Kemah Air Terjun Gunung Betung", "LUAS": 0.0, "FCODE": null, "REMARK": "Pariwisata/Rekreasi Pegunungan", "SRS_ID": null, "LCODE": "GG0080", "METADATA": null }, "geometry": { "type": "Point", "coordinates": [ 105.142332010000075, -5.422204424999961, -1651.794999999998254 ] } },
+{ "type": "Feature", "properties": { "NAMOBJ": "Tempat Pembenihan dan Pelatihan Petani Kakau", "LUAS": 0.0, "FCODE": null, "REMARK": "Peternakan/Penangkaran", "SRS_ID": null, "LCODE": "GG0080", "METADATA": null }, "geometry": { "type": "Point", "coordinates": [ 105.127321868000081, -5.412480177999953, 421.842999999993481 ] } },
+{ "type": "Feature", "properties": { "NAMOBJ": "Gapura Dusun IVB Sungailangka", "LUAS": 0.0, "FCODE": null, "REMARK": "Tugu/Monumen/Gapura", "SRS_ID": null, "LCODE": "GG0060", "METADATA": null }, "geometry": { "type": "Point", "coordinates": [ 105.172843804000081, -5.381701863999979, 259.994000000006054 ] } },
+{ "type": "Feature", "properties": { "NAMOBJ": "Pahawang Resort", "LUAS": 0.0, "FCODE": null, "REMARK": "Pariwisata/Rekreasi Pantai", "SRS_ID": null, "LCODE": "GG0080", "METADATA": null }, "geometry": { "type": "Point", "coordinates": [ 105.212108086000057, -5.686399602999927, 12.863299999997253 ] } },
+{ "type": "Feature", "properties": { "NAMOBJ": "Pantai Pancur Sukarame", "LUAS": 0.0, "FCODE": null, "REMARK": "Pariwisata/Rekreasi Pantai", "SRS_ID": null, "LCODE": "GG0080", "METADATA": null }, "geometry": { "type": "Point", "coordinates": [ 105.192928751000068, -5.719905024999946, 9.017900000006193 ] } },
+{ "type": "Feature", "properties": { "NAMOBJ": "Tugu Pahlawan", "LUAS": 0.0, "FCODE": null, "REMARK": "Tugu/Monumen/Gapura", "SRS_ID": null, "LCODE": "GG0060", "METADATA": null }, "geometry": { "type": "Point", "coordinates": [ 105.083235806000062, -5.609827449999955, 72.464500000001863 ] } },
+{ "type": "Feature", "properties": { "NAMOBJ": "Goa Lawa Ceringinasri", "LUAS": 0.0, "FCODE": null, "REMARK": "Pariwisata/Rekreasi Pegunungan", "SRS_ID": null, "LCODE": "GG0080", "METADATA": null }, "geometry": { "type": "Point", "coordinates": [ 105.037777751000078, -5.57022679399995, 181.573399999993853 ] } },
+{ "type": "Feature", "properties": { "NAMOBJ": "Tugu Pahlawan Kuta Dalom", "LUAS": 0.0, "FCODE": null, "REMARK": "Tugu/Monumen/Gapura", "SRS_ID": null, "LCODE": "GG0060", "METADATA": null }, "geometry": { "type": "Point", "coordinates": [ 105.033697425000071, -5.42436162499996, 135.190100000007078 ] } },
+{ "type": "Feature", "properties": { "NAMOBJ": "Museum Nasional Ketrans migrasian Bagelen", "LUAS": 0.0, "FCODE": null, "REMARK": "Museum", "SRS_ID": null, "LCODE": "GG0060", "METADATA": null }, "geometry": { "type": "Point", "coordinates": [ 105.10719537500006, -5.378514483999936, 129.662599999996019 ] } }
+]
+}

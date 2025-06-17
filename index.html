@@ -1,0 +1,141 @@
+<html>
+<head>
+  <title>Peta Fasilitas Umum Provinsi Lampung</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="leaflet.ajax.min.js"></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('lampung.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 30px;
+      background-color: rgba(255, 255, 255, 0.92); /* semi-transparan */
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #0066cc;
+      font-size: 28px;
+      text-align: center;
+      margin-top: 0;
+    }
+
+    p.description {
+      color: #333;
+      font-size: 16px;
+      line-height: 1.6;
+      text-align: justify;
+      margin-bottom: 25px;
+    }
+
+    #mapsku {
+      width: 100%;
+      height: 600px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    p.footer {
+      font-size: 14px;
+      color: #555;
+      margin-top: 30px;
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+      text-align: center;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      font-size: 16px;
+      font-weight: bold;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Peta Sebaran Fasilitas Umum di Provinsi Lampung</h2>
+    <p class="description">
+      Halaman ini menyajikan informasi spasial mengenai persebaran fasilitas umum penting di Provinsi Lampung. 
+      Fokus utama berada di <strong>Kota Bandar Lampung</strong> dan <strong>Kabupaten Lampung Utara</strong>. 
+      Sebanyak <strong>24 Rumah Sakit</strong> di Kota Bandar Lampung ditampilkan sebagai pusat layanan kesehatan utama, 
+      serta <strong>5 Stasiun Kereta Api</strong> di Kabupaten Lampung Utara yang menjadi bagian dari jaringan transportasi darat regional. 
+      <br><br>
+      Peta ini juga mencakup batas administratif Provinsi Lampung sebagai referensi spasial. 
+      Setiap simbol pada peta dapat diklik untuk menampilkan informasi nama fasilitas, sehingga memudahkan pengguna dalam mengenali lokasi dan fungsinya.
+    </p>
+
+    <div style="text-align: center;">
+      <a href="pesawaran.html" class="btn">Lihat Peta Kabupaten Pesawaran</a>
+    </div>
+
+    <div id="mapsku"></div>
+
+    <p class="footer">
+      Dibuat oleh: <strong>Nadila Stevani</strong> | NPM: <strong>2213034003</strong><br>
+      Program Studi: <strong>Pendidikan Geografi</strong> - Universitas Lampung
+    </p>
+  </div>
+
+  <script>
+    // Inisialisasi peta dengan tile layer HOT OSM agar tampilan jalan berwarna-warni
+    var map = L.map('mapsku').setView([-4.9, 105.3], 8);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors | Tiles by Humanitarian OpenStreetMap Team'
+    }).addTo(map);
+
+    // Fungsi untuk menampilkan popup berdasarkan label
+    function popUp(label) {
+      return function(feature, layer) {
+        if (feature.properties && feature.properties.NAMOBJ) {
+          layer.bindPopup(`<strong>${label}</strong><br>${feature.properties.NAMOBJ}`);
+        }
+      };
+    }
+
+    // Tambahkan data GeoJSON
+    var provinsi = new L.GeoJSON.AJAX("provinsi_lampung.geojson");
+    var rumahSakit = new L.GeoJSON.AJAX("rumah_sakit.geojson", {
+      onEachFeature: popUp("Rumah Sakit")
+    });
+    var stasiun = new L.GeoJSON.AJAX("Stasiun.geojson", {
+      onEachFeature: popUp("Stasiun")
+    });
+
+    provinsi.addTo(map);
+    rumahSakit.addTo(map);
+    stasiun.addTo(map);
+
+    // Layer kontrol
+    var overlayLayers = {
+      "Batas Provinsi Lampung": provinsi,
+      "Rumah Sakit (Bandar Lampung)": rumahSakit,
+      "Stasiun Kereta Api (Lampung Utara)": stasiun
+    };
+    L.control.layers(null, overlayLayers, { collapsed: false }).addTo(map);
+  </script>
+</body>
+</html>

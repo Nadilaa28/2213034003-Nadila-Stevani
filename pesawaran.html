@@ -1,0 +1,99 @@
+<html>
+<head>
+  <title>Peta Pesawaran - Cagar Budaya, Kantor Pos & SPBU</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('pesawaran.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #0066cc;
+    }
+
+    .description {
+      text-align: justify;
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+      margin-top: 30px;
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+    }
+
+    #mapsku {
+      height: 600px;
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 25px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" class="btn">Kembali ke Halaman Beranda</a>
+
+    <h2>Peta Cagar Budaya, Kantor Pos, dan SPBU di Kabupaten Pesawaran</h2>
+    <p class="description">
+      Peta interaktif ini menampilkan sebaran tiga jenis fasilitas penting di Kabupaten Pesawaran, yaitu 
+      <strong>Cagar Budaya</strong>, <strong>Kantor Pos</strong>, dan <strong>SPBU</strong>. 
+      Terdapat total <strong>11 cagar budaya</strong> yang tersebar di beberapa kecamatan, mencerminkan kekayaan sejarah dan budaya lokal. 
+      Selain itu, ditampilkan juga <strong>3 unit kantor pos</strong> sebagai sarana layanan komunikasi dan pengiriman, serta 
+      <strong>3 SPBU</strong> yang mendukung kebutuhan energi masyarakat. 
+      Batas wilayah <strong>administratif Kabupaten Pesawaran</strong> turut disajikan sebagai referensi spasial. 
+      Klik pada simbol-simbol pada peta untuk melihat informasi detail dari masing-masing lokasi.
+    </p>
+
+    <div id="mapsku"></div>
+
+    <p class="footer">
+      Dibuat oleh: <strong>Nadila Stevani</strong> | NPM: <strong>2213034003</strong><br>
+      Program Studi: <strong>Pendidikan Geografi</strong> - Universitas Lampung
+    </p>
+  </div>
+
+  <!-- Script Leaflet & GeoJSON -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="leaflet.ajax.min.js"></script>
+  <script src="mapsku.js"></script>
+</body>
+</html>

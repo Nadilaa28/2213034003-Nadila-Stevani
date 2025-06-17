@@ -1,0 +1,12 @@
+{
+"type": "FeatureCollection",
+"name": "Stasiun",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "NAMOBJ": "Statsiun Kereta Api Blambangan Pagar", "FGSSTA": 0, "KLSSTA": 0, "FCODE": null, "KODKOD": null, "WILSTA": null, "DOPSTA": null, "KMTSTA": null, "LINSTA": null, "KONKON": 0, "REMARK": "Stasiun Kereta Api", "SRS_ID": null, "LCODE": "CA0140", "METADATA": null }, "geometry": { "type": "Point", "coordinates": [ 105.038917300000037, -4.895320599999934, 68.0 ] } },
+{ "type": "Feature", "properties": { "NAMOBJ": "Stasiun Negararatu", "FGSSTA": 0, "KLSSTA": 0, "FCODE": null, "KODKOD": null, "WILSTA": null, "DOPSTA": null, "KMTSTA": null, "LINSTA": null, "KONKON": 0, "REMARK": "Stasiun Kereta Api", "SRS_ID": null, "LCODE": "CA0140", "METADATA": null }, "geometry": { "type": "Point", "coordinates": [ 104.737725434000083, -4.656645389999937, 200.086500000004889 ] } },
+{ "type": "Feature", "properties": { "NAMOBJ": "Stasiun Tulungbuyut", "FGSSTA": 0, "KLSSTA": 0, "FCODE": null, "KODKOD": null, "WILSTA": null, "DOPSTA": null, "KMTSTA": null, "LINSTA": null, "KONKON": 0, "REMARK": "Stasiun Kereta Api", "SRS_ID": null, "LCODE": "CA0140", "METADATA": null }, "geometry": { "type": "Point", "coordinates": [ 104.664537544000041, -4.62583787899996, 297.624299999995856 ] } },
+{ "type": "Feature", "properties": { "NAMOBJ": "Stasiun Kotabumi", "FGSSTA": 0, "KLSSTA": 0, "FCODE": null, "KODKOD": null, "WILSTA": null, "DOPSTA": null, "KMTSTA": null, "LINSTA": null, "KONKON": 0, "REMARK": "Stasiun Kereta Api", "SRS_ID": null, "LCODE": "CA0140", "METADATA": null }, "geometry": { "type": "Point", "coordinates": [ 104.881136863000052, -4.821957934999944, 153.377699999997276 ] } },
+{ "type": "Feature", "properties": { "NAMOBJ": "Stasiun Kalibalangan", "FGSSTA": 0, "KLSSTA": 0, "FCODE": null, "KODKOD": null, "WILSTA": null, "DOPSTA": null, "KMTSTA": null, "LINSTA": null, "KONKON": 0, "REMARK": "Stasiun Kereta Api", "SRS_ID": null, "LCODE": "CA0140", "METADATA": null }, "geometry": { "type": "Point", "coordinates": [ 104.972825614000044, -4.866676405999954, 249.571700000000419 ] } }
+]
+}

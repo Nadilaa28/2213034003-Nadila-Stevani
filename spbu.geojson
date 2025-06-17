@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "spbu",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "NAMOBJ": "SPBU AKR Bumiagung", "FCODE": null, "REMARK": "Stasiun Pompa Bahan Bakar Umum", "SRS_ID": null, "LCODE": "HD0240", "METADATA": null }, "geometry": { "type": "Point", "coordinates": [ 105.178167548000033, -5.186096910999936, 80.87609999999404 ] } },
+{ "type": "Feature", "properties": { "NAMOBJ": "SPBU Bensin AKR 2 Bumiagung", "FCODE": null, "REMARK": "Stasiun Pompa Bahan Bakar Umum", "SRS_ID": null, "LCODE": "HD0240", "METADATA": null }, "geometry": { "type": "Point", "coordinates": [ 105.179856818000076, -5.160847564999926, 82.317999999999302 ] } },
+{ "type": "Feature", "properties": { "NAMOBJ": "SPBU Bensin Pertamina Bumiagung", "FCODE": null, "REMARK": "Stasiun Pompa Bahan Bakar Umum", "SRS_ID": null, "LCODE": "HD0240", "METADATA": null }, "geometry": { "type": "Point", "coordinates": [ 105.182224485000063, -5.173557266999978, 94.574699999997392 ] } }
+]
+}
