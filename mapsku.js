@@ -6,10 +6,22 @@ L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
   attribution: '&copy; OpenStreetMap contributors | Tiles by Humanitarian OpenStreetMap Team'
 }).addTo(map);
 
-// Fungsi umum untuk popup dengan jenis fasilitas
+// Fungsi popup universal dengan penanganan properti yang fleksibel
 function buatPopup(jenis) {
   return function(feature, layer) {
-    const nama = feature.properties?.NAMOBJ || feature.properties?.name || "Tanpa Nama";
+    let nama = "Tanpa Nama";
+    if (feature.properties) {
+      if (feature.properties.NAMOBJ && feature.properties.NAMOBJ.trim() !== "") {
+        nama = feature.properties.NAMOBJ;
+      } else if (feature.properties.name && feature.properties.name.trim() !== "") {
+        nama = feature.properties.name;
+      } else {
+        const fallback = Object.values(feature.properties).find(
+          val => typeof val === 'string' && val.trim() !== ""
+        );
+        if (fallback) nama = fallback;
+      }
+    }
     layer.bindPopup(`<strong>${jenis}:</strong> ${nama}`);
   };
 }
@@ -21,7 +33,8 @@ var batasAdm = new L.GeoJSON.AJAX("administrasi_pesawaran.geojson", {
     weight: 2,
     opacity: 1,
     fillOpacity: 0.1
-  }
+  },
+  onEachFeature: buatPopup("Wilayah") // Tambahkan popup ke polygon juga
 }).addTo(map);
 
 // Layer Cagar Budaya
