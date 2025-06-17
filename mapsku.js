@@ -1,30 +1,20 @@
 // Inisialisasi peta dengan posisi tengah Kabupaten Pesawaran
 var map = L.map('mapsku').setView([-5.45, 105.1], 10);
 
-// Tile layer
+// Tambahkan tile layer
 L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
   attribution: '&copy; OpenStreetMap contributors | Tiles by Humanitarian OpenStreetMap Team'
 }).addTo(map);
 
-// Popup khusus Cagar Budaya
-function popCagarBudaya(feature, layer) {
-  const nama = feature.properties?.NAMOBJ || feature.properties?.name || "Tanpa Nama";
-  layer.bindPopup(`<strong>Cagar Budaya:</strong> ${nama}`);
+// Fungsi umum untuk popup dengan jenis fasilitas
+function buatPopup(jenis) {
+  return function(feature, layer) {
+    const nama = feature.properties?.NAMOBJ || feature.properties?.name || "Tanpa Nama";
+    layer.bindPopup(`<strong>${jenis}:</strong> ${nama}`);
+  };
 }
 
-// Popup khusus Kantor Pos
-function popKantorPos(feature, layer) {
-  const nama = feature.properties?.NAMOBJ || feature.properties?.name || "Tanpa Nama";
-  layer.bindPopup(`<strong>Kantor Pos:</strong> ${nama}`);
-}
-
-// Popup khusus SPBU
-function popSPBU(feature, layer) {
-  const nama = feature.properties?.NAMOBJ || feature.properties?.name || "Tanpa Nama";
-  layer.bindPopup(`<strong>SPBU:</strong> ${nama}`);
-}
-
-// Batas Administrasi
+// Layer Batas Administrasi
 var batasAdm = new L.GeoJSON.AJAX("administrasi_pesawaran.geojson", {
   style: {
     color: "#FF5733",
@@ -34,13 +24,13 @@ var batasAdm = new L.GeoJSON.AJAX("administrasi_pesawaran.geojson", {
   }
 }).addTo(map);
 
-// Cagar Budaya
+// Layer Cagar Budaya
 var cagarBudaya = new L.GeoJSON.AJAX("cagar_budaya.geojson", {
-  onEachFeature: popCagarBudaya,
+  onEachFeature: buatPopup("Cagar Budaya"),
   pointToLayer: function (feature, latlng) {
     return L.circleMarker(latlng, {
       radius: 8,
-      fillColor: "#FFD700", // emas
+      fillColor: "#FFD700", // Emas
       color: "#FFA500",
       weight: 1,
       opacity: 1,
@@ -49,13 +39,13 @@ var cagarBudaya = new L.GeoJSON.AJAX("cagar_budaya.geojson", {
   }
 }).addTo(map);
 
-// Kantor Pos
+// Layer Kantor Pos
 var kantorPos = new L.GeoJSON.AJAX("kantor_pos.geojson", {
-  onEachFeature: popKantorPos,
+  onEachFeature: buatPopup("Kantor Pos"),
   pointToLayer: function (feature, latlng) {
     return L.circleMarker(latlng, {
       radius: 8,
-      fillColor: "#007bff", // biru
+      fillColor: "#007bff", // Biru
       color: "#0056b3",
       weight: 1,
       opacity: 1,
@@ -64,13 +54,13 @@ var kantorPos = new L.GeoJSON.AJAX("kantor_pos.geojson", {
   }
 }).addTo(map);
 
-// SPBU
+// Layer SPBU
 var spbu = new L.GeoJSON.AJAX("spbu.geojson", {
-  onEachFeature: popSPBU,
+  onEachFeature: buatPopup("SPBU"),
   pointToLayer: function (feature, latlng) {
     return L.circleMarker(latlng, {
       radius: 8,
-      fillColor: "#ff4d4d", // merah terang
+      fillColor: "#ff4d4d", // Merah terang
       color: "#cc0000",
       weight: 1,
       opacity: 1,
@@ -79,7 +69,7 @@ var spbu = new L.GeoJSON.AJAX("spbu.geojson", {
   }
 }).addTo(map);
 
-// Kontrol Layer
+// Kontrol Layer (Layer Switcher)
 L.control.layers(null, {
   "Batas Administrasi": batasAdm,
   "Cagar Budaya": cagarBudaya,
