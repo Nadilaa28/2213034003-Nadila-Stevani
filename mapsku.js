@@ -6,14 +6,12 @@ L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
   attribution: '&copy; OpenStreetMap contributors | Tiles by Humanitarian OpenStreetMap Team'
 }).addTo(map);
 
-// Fungsi popup khusus untuk fitur titik (Point)
+// Fungsi popup untuk titik (Point)
 function buatPopup(jenis) {
   return function(feature, layer) {
-    // Hanya buat popup untuk titik
     if (!feature.geometry || feature.geometry.type !== "Point") return;
 
     let nama = "Tanpa Nama";
-
     if (feature.properties) {
       if (feature.properties.NAMOBJ && feature.properties.NAMOBJ.trim() !== "") {
         nama = feature.properties.NAMOBJ;
@@ -24,9 +22,20 @@ function buatPopup(jenis) {
       }
     }
 
+    // Pastikan string template dalam backtick ` ` bukan kutip biasa
     layer.bindPopup(`<strong>${jenis}:</strong> ${nama}`);
   };
 }
+
+// Layer: Batas Administrasi tanpa popup
+var batasAdm = new L.GeoJSON.AJAX("administrasi_pesawaran.geojson", {
+  style: {
+    color: "#FF5733",  // garis oranye
+    weight: 2,
+    opacity: 1,
+    fillOpacity: 0    // transparan
+  }
+}).addTo(map);
 
 // Layer: Cagar Budaya
 var cagarBudaya = new L.GeoJSON.AJAX("cagar_budaya.geojson", {
@@ -73,16 +82,6 @@ var spbu = new L.GeoJSON.AJAX("spbu.geojson", {
   }
 }).addTo(map);
 
-// Layer: Batas Administrasi (TANPA POPUP)
-var batasAdm = new L.GeoJSON.AJAX("administrasi_pesawaran.geojson", {
-  style: {
-    color: "#FF5733",
-    weight: 2,
-    opacity: 1,
-    fillOpacity: 0.1
-  }
-}).addTo(map);
-
 // Layer Control
 L.control.layers(null, {
   "Batas Administrasi": batasAdm,
@@ -92,3 +91,5 @@ L.control.layers(null, {
 }, {
   collapsed: false
 }).addTo(map);
+
+
