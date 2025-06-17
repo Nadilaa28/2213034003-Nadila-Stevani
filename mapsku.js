@@ -6,9 +6,9 @@ L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
   attribution: '&copy; OpenStreetMap contributors | Tiles by Humanitarian OpenStreetMap Team'
 }).addTo(map);
 
-// Fungsi popup universal dengan penanganan properti yang fleksibel
+// Fungsi popup universal dengan prioritas properti
 function buatPopup(jenis) {
-  return function(feature, layer) {
+  return function (feature, layer) {
     let nama = "Tanpa Nama";
     if (feature.properties) {
       if (feature.properties.NAMOBJ && feature.properties.NAMOBJ.trim() !== "") {
@@ -16,6 +16,7 @@ function buatPopup(jenis) {
       } else if (feature.properties.name && feature.properties.name.trim() !== "") {
         nama = feature.properties.name;
       } else {
+        // Fallback ke properti string lain
         const fallback = Object.values(feature.properties).find(
           val => typeof val === 'string' && val.trim() !== ""
         );
@@ -26,7 +27,9 @@ function buatPopup(jenis) {
   };
 }
 
-// Layer Batas Administrasi
+// === LAYER-LAYER GEOJSON ===
+
+// Batas Administrasi
 var batasAdm = new L.GeoJSON.AJAX("administrasi_pesawaran.geojson", {
   style: {
     color: "#FF5733",
@@ -34,10 +37,10 @@ var batasAdm = new L.GeoJSON.AJAX("administrasi_pesawaran.geojson", {
     opacity: 1,
     fillOpacity: 0.1
   },
-  onEachFeature: buatPopup("Wilayah") // Tambahkan popup ke polygon juga
+  onEachFeature: buatPopup("Wilayah")
 }).addTo(map);
 
-// Layer Cagar Budaya
+// Cagar Budaya
 var cagarBudaya = new L.GeoJSON.AJAX("cagar_budaya.geojson", {
   onEachFeature: buatPopup("Cagar Budaya"),
   pointToLayer: function (feature, latlng) {
@@ -52,7 +55,7 @@ var cagarBudaya = new L.GeoJSON.AJAX("cagar_budaya.geojson", {
   }
 }).addTo(map);
 
-// Layer Kantor Pos
+// Kantor Pos
 var kantorPos = new L.GeoJSON.AJAX("kantor_pos.geojson", {
   onEachFeature: buatPopup("Kantor Pos"),
   pointToLayer: function (feature, latlng) {
@@ -67,7 +70,7 @@ var kantorPos = new L.GeoJSON.AJAX("kantor_pos.geojson", {
   }
 }).addTo(map);
 
-// Layer SPBU
+// SPBU
 var spbu = new L.GeoJSON.AJAX("spbu.geojson", {
   onEachFeature: buatPopup("SPBU"),
   pointToLayer: function (feature, latlng) {
@@ -82,7 +85,7 @@ var spbu = new L.GeoJSON.AJAX("spbu.geojson", {
   }
 }).addTo(map);
 
-// Kontrol Layer (Layer Switcher)
+// Kontrol Layer
 L.control.layers(null, {
   "Batas Administrasi": batasAdm,
   "Cagar Budaya": cagarBudaya,
